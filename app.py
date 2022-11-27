@@ -28,27 +28,71 @@ def predict():
         Journey_month = int(pd.to_datetime(date_dep, format ="%Y-%m-%dT%H:%M").month)
      
         # Departure Time
-        Dep_date = int(pd.to_datetime(date_dep, format ="%Y-%m-%dT%H:%M"))
-        # Dep_hour = int(pd.to_datetime(date_dep, format ="%Y-%m-%dT%H:%M").hour)
-        # Dep_min = int(pd.to_datetime(date_dep, format ="%Y-%m-%dT%H:%M").minute)
+        Dep_hour = int(pd.to_datetime(date_dep, format ="%Y-%m-%dT%H:%M").hour)
+        Dep_min = int(pd.to_datetime(date_dep, format ="%Y-%m-%dT%H:%M").minute)
        
         # ARRIVAL date
         date_arrival = request.form["Arrival_Time"]
 
         # Arrival Time
-        Arrival_date = int(pd.to_datetime(date_arrival, format ="%Y-%m-%dT%H:%M"))
-        # Arrival_hour = int(pd.to_datetime(date_arrival, format ="%Y-%m-%dT%H:%M").hour)
-        # Arrival_min = int(pd.to_datetime(date_arrival, format ="%Y-%m-%dT%H:%M").minute)
+        Arrival_hour = int(pd.to_datetime(date_arrival, format ="%Y-%m-%dT%H:%M").hour)
+        Arrival_min = int(pd.to_datetime(date_arrival, format ="%Y-%m-%dT%H:%M").minute)
      
         # Duration
-        dur_hour = datetime.datetime(Arrival_date - Dep_date).hour
-        dur_min = datetime.datetime(Arrival_date - Dep_date).min           
+        dur_hour = abs(Arrival_hour - Dep_hour) # WARNING: Maybe this is wrong! Need to review it!!
+        dur_min = abs(Arrival_min - Dep_min)          
 
-        # Total Stops
-        Total_stops = int(request.form["stops"])
+        # --------------- Total Stops ---------------
 
-        # Airlines
-        airline=request.form['airline']
+        total_stops = request.form["stops"]
+
+        if (total_stops=='Total_Stops_0'):
+            Total_Stops_non_stop = 1
+            Total_Stops_1_stops = 0
+            Total_Stops_2_stops = 0
+            Total_Stops_3_stops = 0
+            Total_Stops_4_stops = 0
+        
+        elif (total_stops=='Total_Stops_1'):
+            Total_Stops_non_stop = 0
+            Total_Stops_1_stops = 1
+            Total_Stops_2_stops = 0
+            Total_Stops_3_stops = 0
+            Total_Stops_4_stops = 0
+        
+        elif (total_stops=='Total_Stops_2'):
+            Total_Stops_non_stop = 0
+            Total_Stops_1_stops = 0
+            Total_Stops_2_stops = 1
+            Total_Stops_3_stops = 0
+            Total_Stops_4_stops = 0
+        
+        elif (total_stops=='Total_Stops_3'):
+            Total_Stops_non_stop = 0
+            Total_Stops_1_stops = 0
+            Total_Stops_2_stops = 0
+            Total_Stops_3_stops = 1
+            Total_Stops_4_stops = 0
+        
+        elif (total_stops=='Total_Stops_4'):
+            Total_Stops_non_stop = 0
+            Total_Stops_1_stops = 0
+            Total_Stops_2_stops = 0
+            Total_Stops_3_stops = 0
+            Total_Stops_4_stops = 1
+        
+        else:
+            Total_Stops_non_stop = 0
+            Total_Stops_1_stops = 0
+            Total_Stops_2_stops = 0
+            Total_Stops_3_stops = 0
+            Total_Stops_4_stops = 0
+
+
+        # --------------- Airlines ---------------------
+
+        airline = request.form['airline']
+
         if(airline=='Jet Airways'):
             Jet_Airways = 1
             IndiGo = 0
@@ -203,7 +247,126 @@ def predict():
             Multiple_carriers_Premium_economy = 0
             Jet_Airways_Business = 0
             Vistara_Premium_economy = 0
-            Trujet = 0   
+            Trujet = 0
+
+        # --------------- Source ---------------------
+
+        Source = request.form["Source"]
+
+        if (Source == 'Delhi'):
+            s_Delhi = 1
+            s_Kolkata = 0
+            s_Mumbai = 0
+            s_Chennai = 0
+
+        elif (Source == 'Kolkata'):
+            s_Delhi = 0
+            s_Kolkata = 1
+            s_Mumbai = 0
+            s_Chennai = 0
+
+        elif (Source == 'Mumbai'):
+            s_Delhi = 0
+            s_Kolkata = 0
+            s_Mumbai = 1
+            s_Chennai = 0
+
+        elif (Source == 'Chennai'):
+            s_Delhi = 0
+            s_Kolkata = 0
+            s_Mumbai = 0
+            s_Chennai = 1
+
+        else:
+            s_Delhi = 0
+            s_Kolkata = 0
+            s_Mumbai = 0
+            s_Chennai = 0
+
+        # --------------- Destination ---------------------    
+
+        Destination = request.form["Destination"]
+
+        if (Destination == 'Cochin'):
+            d_Cochin = 1
+            d_Delhi = 0
+            d_Hyderabad = 0
+            d_Kolkata = 0
+        
+        elif (Destination == 'Delhi'):
+            d_Cochin = 0
+            d_Delhi = 1
+            d_Hyderabad = 0
+            d_Kolkata = 0
+
+        elif (Destination == 'New_Delhi'):
+            d_Cochin = 0
+            d_Delhi = 0
+            d_New_Delhi = 1
+            d_Hyderabad = 0
+            d_Kolkata = 0
+
+        elif (Destination == 'Hyderabad'):
+            d_Cochin = 0
+            d_Delhi = 0
+            d_Hyderabad = 1
+            d_Kolkata = 0
+
+        elif (Destination == 'Kolkata'):
+            d_Cochin = 0
+            d_Delhi = 0
+            d_Hyderabad = 0
+            d_Kolkata = 1
+
+        else:
+            d_Cochin = 0
+            d_Delhi = 0
+            d_Hyderabad = 0
+            d_Kolkata = 0
+
+        # ----------- MODEL --------------
+
+        prediction=model.predict([[
+            Journey_day,
+            Journey_month,
+            Dep_hour,
+            Dep_min,
+            Arrival_hour,
+            Arrival_min,
+            dur_hour,
+            dur_min,
+            Total_Stops_2_stops,
+            Total_Stops_3_stops,
+            Total_Stops_4_stops,
+            Total_Stops_non_stop,
+            Air_India,
+            GoAir,
+            IndiGo,
+            Jet_Airways,
+            Jet_Airways_Business,
+            Multiple_carriers,
+            Multiple_carriers_Premium_economy,
+            SpiceJet,
+            Trujet,
+            Vistara,
+            Vistara_Premium_economy,
+            s_Chennai,
+            s_Delhi,
+            s_Kolkata,
+            s_Mumbai,
+            d_Cochin,
+            d_Delhi,
+            d_Hyderabad,
+            d_Kolkata
+        ]])
+
+        output=round(prediction[0],2)
+
+        return render_template('index.html',prediction_text="Your flight will cost: {}".format(output))
+
+
+    return render_template("index.html")
+
 
 
 
