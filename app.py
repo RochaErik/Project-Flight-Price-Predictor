@@ -2,7 +2,6 @@ import pandas as pd
 from flask import Flask, request, render_template
 from flask_cors import cross_origin
 import pickle
-import datetime
 
 
 app = Flask(__name__)
@@ -11,6 +10,11 @@ model = pickle.load(open('model.pkl', 'rb'))
 @app.route('/')
 @cross_origin()
 def home():
+    return render_template('home.html')
+
+@app.route('/prices')
+@cross_origin()
+def index():
     return render_template('index.html')
 
 @app.route('/predict', methods = ['GET', 'POST']) 
