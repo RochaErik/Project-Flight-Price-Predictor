@@ -52,281 +52,142 @@ def predict():
 
         if (total_stops=='Total_Stops_0'):
             Total_Stops_non_stop = 1
-            Total_Stops_1_stops = 0
             Total_Stops_2_stops = 0
             Total_Stops_3_stops = 0
             Total_Stops_4_stops = 0
         
         elif (total_stops=='Total_Stops_1'):
             Total_Stops_non_stop = 0
-            Total_Stops_1_stops = 1
             Total_Stops_2_stops = 0
             Total_Stops_3_stops = 0
             Total_Stops_4_stops = 0
         
         elif (total_stops=='Total_Stops_2'):
             Total_Stops_non_stop = 0
-            Total_Stops_1_stops = 0
             Total_Stops_2_stops = 1
             Total_Stops_3_stops = 0
             Total_Stops_4_stops = 0
         
         elif (total_stops=='Total_Stops_3'):
             Total_Stops_non_stop = 0
-            Total_Stops_1_stops = 0
             Total_Stops_2_stops = 0
             Total_Stops_3_stops = 1
             Total_Stops_4_stops = 0
         
         elif (total_stops=='Total_Stops_4'):
             Total_Stops_non_stop = 0
-            Total_Stops_1_stops = 0
             Total_Stops_2_stops = 0
             Total_Stops_3_stops = 0
             Total_Stops_4_stops = 1
         
-        else:
-            Total_Stops_non_stop = 0
-            Total_Stops_1_stops = 0
-            Total_Stops_2_stops = 0
-            Total_Stops_3_stops = 0
-            Total_Stops_4_stops = 0
-
-
+        
         # --------------- Airlines ---------------------
 
         airline = request.form['airline']
 
-        if(airline=='Jet Airways'):
-            Jet_Airways = 1
-            IndiGo = 0
-            Air_India = 0
-            Multiple_carriers = 0
-            SpiceJet = 0
-            Vistara = 0
-            GoAir = 0
-            Multiple_carriers_Premium_economy = 0
-            Jet_Airways_Business = 0
-            Vistara_Premium_economy = 0
-            Trujet = 0 
-
-        elif (airline=='IndiGo'):
-            Jet_Airways = 0
-            IndiGo = 1
-            Air_India = 0
-            Multiple_carriers = 0
-            SpiceJet = 0
-            Vistara = 0
-            GoAir = 0
-            Multiple_carriers_Premium_economy = 0
-            Jet_Airways_Business = 0
-            Vistara_Premium_economy = 0
-            Trujet = 0 
-
-        elif (airline=='Air India'):
-            Jet_Airways = 0
-            IndiGo = 0
-            Air_India = 1
-            Multiple_carriers = 0
-            SpiceJet = 0
-            Vistara = 0
-            GoAir = 0
-            Multiple_carriers_Premium_economy = 0
-            Jet_Airways_Business = 0
-            Vistara_Premium_economy = 0
-            Trujet = 0 
+        if(airline=='LATAM'):
+            Latam = 1
+            Azul = 0
+            Gol = 0
+            Voe_Pass = 0      
+     
+          
+        elif (airline=='Azul'):
+            Latam = 0
+            Azul = 1
+            Gol = 0
+            Voe_Pass = 0
+             
             
-        elif (airline=='Multiple carriers'):
-            Jet_Airways = 0
-            IndiGo = 0
-            Air_India = 0
-            Multiple_carriers = 1
-            SpiceJet = 0
-            Vistara = 0
-            GoAir = 0
-            Multiple_carriers_Premium_economy = 0
-            Jet_Airways_Business = 0
-            Vistara_Premium_economy = 0
-            Trujet = 0 
+        elif (airline=='Gol'):
+            Latam = 0
+            Azul = 0
+            Gol = 1
+            Voe_Pass = 0
+             
             
-        elif (airline=='SpiceJet'):
-            Jet_Airways = 0
-            IndiGo = 0
-            Air_India = 0
-            Multiple_carriers = 0
-            SpiceJet = 1
-            Vistara = 0
-            GoAir = 0
-            Multiple_carriers_Premium_economy = 0
-            Jet_Airways_Business = 0
-            Vistara_Premium_economy = 0
-            Trujet = 0 
+        elif (airline=='VoePass'):
+            Latam = 0
+            Azul = 0
+            Gol = 0
+            Voe_Pass = 1
+             
             
-        elif (airline=='Vistara'):
-            Jet_Airways = 0
-            IndiGo = 0
-            Air_India = 0
-            Multiple_carriers = 0
-            SpiceJet = 0
-            Vistara = 1
-            GoAir = 0
-            Multiple_carriers_Premium_economy = 0
-            Jet_Airways_Business = 0
-            Vistara_Premium_economy = 0
-            Trujet = 0
-
-        elif (airline=='GoAir'):
-            Jet_Airways = 0
-            IndiGo = 0
-            Air_India = 0
-            Multiple_carriers = 0
-            SpiceJet = 0
-            Vistara = 0
-            GoAir = 1
-            Multiple_carriers_Premium_economy = 0
-            Jet_Airways_Business = 0
-            Vistara_Premium_economy = 0
-            Trujet = 0
-
-        elif (airline=='Multiple carriers Premium economy'):
-            Jet_Airways = 0
-            IndiGo = 0
-            Air_India = 0
-            Multiple_carriers = 0
-            SpiceJet = 0
-            Vistara = 0
-            GoAir = 0
-            Multiple_carriers_Premium_economy = 1
-            Jet_Airways_Business = 0
-            Vistara_Premium_economy = 0
-            Trujet = 0
-
-        elif (airline=='Jet Airways Business'):
-            Jet_Airways = 0
-            IndiGo = 0
-            Air_India = 0
-            Multiple_carriers = 0
-            SpiceJet = 0
-            Vistara = 0
-            GoAir = 0
-            Multiple_carriers_Premium_economy = 0
-            Jet_Airways_Business = 1
-            Vistara_Premium_economy = 0
-            Trujet = 0
-
-        elif (airline=='Vistara Premium economy'):
-            Jet_Airways = 0
-            IndiGo = 0
-            Air_India = 0
-            Multiple_carriers = 0
-            SpiceJet = 0
-            Vistara = 0
-            GoAir = 0
-            Multiple_carriers_Premium_economy = 0
-            Jet_Airways_Business = 0
-            Vistara_Premium_economy = 1
-            Trujet = 0
+        elif (airline=='Avianca Brasil'):
+            Latam = 0
+            Azul = 0
+            Gol = 0
+            Voe_Pass = 0
             
-        elif (airline=='Trujet'):
-            Jet_Airways = 0
-            IndiGo = 0
-            Air_India = 0
-            Multiple_carriers = 0
-            SpiceJet = 0
-            Vistara = 0
-            GoAir = 0
-            Multiple_carriers_Premium_economy = 0
-            Jet_Airways_Business = 0
-            Vistara_Premium_economy = 0
-            Trujet = 1
-
-        else:
-            Jet_Airways = 0
-            IndiGo = 0
-            Air_India = 0
-            Multiple_carriers = 0
-            SpiceJet = 0
-            Vistara = 0
-            GoAir = 0
-            Multiple_carriers_Premium_economy = 0
-            Jet_Airways_Business = 0
-            Vistara_Premium_economy = 0
-            Trujet = 0
 
         # --------------- Source ---------------------
 
         Source = request.form["Source"]
 
-        if (Source == 'Delhi'):
-            s_Delhi = 1
-            s_Kolkata = 0
-            s_Mumbai = 0
-            s_Chennai = 0
+        if (Source == 'Rio Grande do Sul'):
+            s_Rio_Grande_do_Sul = 1
+            s_Rio_de_Janeiro = 0
+            s_Santa_Catarina = 0
+            s_Vitória = 0
 
-        elif (Source == 'Kolkata'):
-            s_Delhi = 0
-            s_Kolkata = 1
-            s_Mumbai = 0
-            s_Chennai = 0
+        elif (Source == 'Rio de Janeiro'):
+            s_Rio_Grande_do_Sul = 0
+            s_Rio_de_Janeiro = 1
+            s_Santa_Catarina = 0
+            s_Vitória = 0
 
-        elif (Source == 'Mumbai'):
-            s_Delhi = 0
-            s_Kolkata = 0
-            s_Mumbai = 1
-            s_Chennai = 0
+        elif (Source == 'Santa Catarina'):
+            s_Rio_Grande_do_Sul = 0
+            s_Rio_de_Janeiro = 0
+            s_Santa_Catarina = 1
+            s_Vitória = 0
 
-        elif (Source == 'Chennai'):
-            s_Delhi = 0
-            s_Kolkata = 0
-            s_Mumbai = 0
-            s_Chennai = 1
+        elif (Source == 'Vitória'):
+            s_Rio_Grande_do_Sul = 0
+            s_Rio_de_Janeiro = 0
+            s_Santa_Catarina = 0
+            s_Vitória = 1
 
-        else:
-            s_Delhi = 0
-            s_Kolkata = 0
-            s_Mumbai = 0
-            s_Chennai = 0
+        elif (Source == 'Belo Horizonte'):
+            s_Rio_Grande_do_Sul = 0
+            s_Rio_de_Janeiro = 0
+            s_Santa_Catarina = 0
+            s_Vitória = 0
 
         # --------------- Destination ---------------------    
 
         Destination = request.form["Destination"]
 
-        if (Destination == 'Cochin'):
-            d_Cochin = 1
-            d_Delhi = 0
-            d_Hyderabad = 0
-            d_Kolkata = 0
+        if (Destination == 'Rio de Janeiro'):
+            d_Rio_de_Janeiro = 1
+            d_Salvador = 0
+            d_São_Paulo = 0
+            d_Vitória = 0
         
-        elif (Destination == 'Delhi'):
-            d_Cochin = 0
-            d_Delhi = 1
-            d_Hyderabad = 0
-            d_Kolkata = 0
+        elif (Destination == 'Salvador'):
+            d_Rio_de_Janeiro = 0
+            d_Salvador = 1
+            d_São_Paulo = 0
+            d_Vitória = 0
 
-        elif (Destination == 'New_Delhi'):
-            d_Cochin = 0
-            d_Delhi = 0
-            d_New_Delhi = 1
-            d_Hyderabad = 0
-            d_Kolkata = 0
+        
+        elif (Destination == 'São Paulo'):
+            d_Rio_de_Janeiro = 0
+            d_Salvador = 0
+            d_São_Paulo = 1
+            d_Vitória = 0
 
-        elif (Destination == 'Hyderabad'):
-            d_Cochin = 0
-            d_Delhi = 0
-            d_Hyderabad = 1
-            d_Kolkata = 0
+        elif (Destination == 'Vitória'):
+            d_Rio_de_Janeiro = 0
+            d_Salvador = 0
+            d_São_Paulo = 0
+            d_Vitória = 1
 
-        elif (Destination == 'Kolkata'):
-            d_Cochin = 0
-            d_Delhi = 0
-            d_Hyderabad = 0
-            d_Kolkata = 1
-
-        else:
-            d_Cochin = 0
-            d_Delhi = 0
-            d_Hyderabad = 0
-            d_Kolkata = 0
+        elif (Destination == 'Belo Horizonte'):
+            d_Rio_de_Janeiro = 0
+            d_Salvador = 0
+            d_São_Paulo = 0
+            d_Vitória = 0
 
         # ----------- MODEL --------------
 
@@ -343,30 +204,23 @@ def predict():
             Total_Stops_3_stops,
             Total_Stops_4_stops,
             Total_Stops_non_stop,
-            Air_India,
-            GoAir,
-            IndiGo,
-            Jet_Airways,
-            Jet_Airways_Business,
-            Multiple_carriers,
-            Multiple_carriers_Premium_economy,
-            SpiceJet,
-            Trujet,
-            Vistara,
-            Vistara_Premium_economy,
-            s_Chennai,
-            s_Delhi,
-            s_Kolkata,
-            s_Mumbai,
-            d_Cochin,
-            d_Delhi,
-            d_Hyderabad,
-            d_Kolkata
+            Azul,
+            Gol,
+            Latam,
+            Voe_Pass,
+            s_Rio_Grande_do_Sul,
+            s_Rio_de_Janeiro,
+            s_Santa_Catarina,
+            s_Vitória,
+            d_Rio_de_Janeiro,
+            d_Salvador,
+            d_São_Paulo,
+            d_Vitória
         ]])
 
         output=round(prediction[0],2)
 
-        return render_template('index.html',prediction_text="Your flight will cost: {}".format(output))
+        return render_template('index.html',prediction_text="Your flight will cost: R${}.".format(output))
 
 
     return render_template("index.html")
