@@ -225,7 +225,10 @@ def predict():
 
     return render_template("index.html")
 
-
+@app.route('/about')
+@cross_origin()
+def about_us():
+    return render_template('about.html')
 
 
 if __name__ == "__main__":
