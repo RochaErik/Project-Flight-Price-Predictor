@@ -1,6 +1,6 @@
 body {
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(https://images.unsplash.com/photo-1503480207415-fdddcc21d5fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(https://images.unsplash.com/photo-1515109644962-6b4a2c57f91e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
     background-size: cover;
     background-position: center;
     text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.3);
@@ -10,12 +10,28 @@ body {
     max-width: 60vw;
 }
 
+.navbar-brand {
+    padding: 0.25rem 0;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    margin-left: 1rem;
+    border-bottom: 0.25rem solid transparent;
+    font-size: 25px;
+    text-shadow: 2px 2px #000000;
+}
+
+.navbar-brand:hover {
+    color: rgba(255, 255, 255, 0.8);    
+}
+
 .nav-link {
     padding: 0.25rem 0;
     font-weight: 700;
-    color: rgb(255, 255, 255, 0.8);
+    color: rgb(255, 255, 255, 1.0);
     margin-left: 1rem;
     border-bottom: 0.25rem solid transparent;
+    font-size: 20px;
+    text-shadow: 1.5px 1.5px #000000;
 }
 
 .nav-link:hover {
@@ -30,6 +46,6 @@ body {
 
 .btn-secondary,
 .btn-secondary:hover {
-    color: white;
+    color: #333;
     text-shadow: none;
 }

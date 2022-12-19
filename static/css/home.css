@@ -3,7 +3,7 @@ body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(https://images.unsplash.com/photo-1547897433-eaa570230bda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1743&q=80);
     background-size: cover;
     background-position: center;
-    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.3);
+    text-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.3);
     box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.3);
 }
 
@@ -17,6 +17,8 @@ body {
     color: rgb(255, 255, 255);
     margin-left: 1rem;
     border-bottom: 0.25rem solid transparent;
+    font-size: 25px;
+    text-shadow: 2px 2px #000000;
 }
 
 .navbar-brand:hover {
@@ -26,9 +28,11 @@ body {
 .nav-link {
     padding: 0.25rem 0;
     font-weight: 700;
-    color: rgb(255, 255, 255, 0.8);
+    color: rgb(255, 255, 255, 1.0);
     margin-left: 1rem;
     border-bottom: 0.25rem solid transparent;
+    font-size: 20px;
+    text-shadow: 2px 2px #000000;
 }
 
 .nav-link:hover {
@@ -39,10 +43,8 @@ body {
 .nav-link.active {
     color: white;
     border-bottom-color: white;
-}
-
-.btn-secondary,
-.btn-secondary:hover {
-    color: #333;
     text-shadow: none;
 }
+
+
+
